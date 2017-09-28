@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using CustomerAssignment.Customers.Application.Mappers;
+using CustomerAssignment.Customers.Application.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,9 @@ namespace CustomerAssignment.Customers.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddTransient<ICustomerCommandService, CustomerCommandService>();
+            services.AddTransient<ICustomerCommandMapper, CustomerCommandMapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
