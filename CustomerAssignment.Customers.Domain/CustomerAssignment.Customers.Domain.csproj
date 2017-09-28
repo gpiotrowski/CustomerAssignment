@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CustomerAssignment.Common.Core\CustomerAssignment.Common.Core.csproj" />
+  </ItemGroup>
+
 </Project>
