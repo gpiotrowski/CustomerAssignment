@@ -1,5 +1,7 @@
-﻿using CustomerAssignment.Customers.Application.Mappers;
+﻿using CustomerAssignment.Common.API.Middlewares;
+using CustomerAssignment.Customers.Application.Mappers;
 using CustomerAssignment.Customers.Application.Services;
+using CustomerAssignment.Customers.Application.Validations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +25,7 @@ namespace CustomerAssignment.Customers.API
 
             services.AddTransient<ICustomerCommandService, CustomerCommandService>();
             services.AddTransient<ICustomerCommandMapper, CustomerCommandMapper>();
+            services.AddTransient<ICustomerCommandValidation, CustomerCommandValidation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +36,7 @@ namespace CustomerAssignment.Customers.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

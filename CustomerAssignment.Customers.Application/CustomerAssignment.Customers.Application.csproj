@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CustomerAssignment.Common.Application\CustomerAssignment.Common.Application.csproj" />
     <ProjectReference Include="..\CustomerAssignment.Customers.Domain\CustomerAssignment.Customers.Domain.csproj" />
   </ItemGroup>
 

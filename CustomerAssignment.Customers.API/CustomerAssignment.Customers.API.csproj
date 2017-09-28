@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CustomerAssignment.Common.API\CustomerAssignment.Common.API.csproj" />
     <ProjectReference Include="..\CustomerAssignment.Customers.Application\CustomerAssignment.Customers.Application.csproj" />
   </ItemGroup>
 
