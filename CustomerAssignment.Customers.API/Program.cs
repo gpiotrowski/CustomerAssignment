@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace CustomerAssignment
+namespace CustomerAssignment.Customers.API
 {
     public class Program
     {
