@@ -4,7 +4,7 @@ namespace CustomerAssignment.Customers.Domain.Commands
 {
     public class CreateCustomerCommand : ICommand
     {
-        public string CustomerName { get; set; }
-        public string CustomerSurname { get; set; }
+        public string CustomerFirstName { get; set; }
+        public string CustomerLastName { get; set; }
     }
 }

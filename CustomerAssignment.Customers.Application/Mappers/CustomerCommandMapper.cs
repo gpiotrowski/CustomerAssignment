@@ -9,8 +9,8 @@ namespace CustomerAssignment.Customers.Application.Mappers
         {
             var command = new CreateCustomerCommand()
             {
-                CustomerName = request.Name,
-                CustomerSurname = request.Surname
+                CustomerFirstName = request.FirstName,
+                CustomerLastName = request.LastName
             };
 
             return command;
