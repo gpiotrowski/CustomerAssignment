@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{CDAF20D0-384D-435B-BF38-8F8047368B35}"
 EndProject
@@ -9,15 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAssignment.Common.C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customers", "Customers", "{2040CB97-9AFD-4597-BFE1-471C4574041F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAssignment.Customers.API", "CustomerAssignment.Customers.API\CustomerAssignment.Customers.API.csproj", "{7F13972B-AA6A-4C9B-BD2F-7BA3A27F2466}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAssignment.Customers.API", "CustomerAssignment.Customers.API\CustomerAssignment.Customers.API.csproj", "{7F13972B-AA6A-4C9B-BD2F-7BA3A27F2466}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAssignment.Customers.Application", "CustomerAssignment.Customers.Application\CustomerAssignment.Customers.Application.csproj", "{E64BADBB-CB81-4967-9559-1A97F4036AD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAssignment.Customers.Application", "CustomerAssignment.Customers.Application\CustomerAssignment.Customers.Application.csproj", "{E64BADBB-CB81-4967-9559-1A97F4036AD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAssignment.Customers.Domain", "CustomerAssignment.Customers.Domain\CustomerAssignment.Customers.Domain.csproj", "{FF8D0FD6-03C1-4201-91ED-9FA798A6B408}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAssignment.Customers.Domain", "CustomerAssignment.Customers.Domain\CustomerAssignment.Customers.Domain.csproj", "{FF8D0FD6-03C1-4201-91ED-9FA798A6B408}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAssignment.Common.Application", "CustomerAssignment.Common.Application\CustomerAssignment.Common.Application.csproj", "{1CAEBCDA-4DE8-4567-B665-58200F409DC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAssignment.Common.Application", "CustomerAssignment.Common.Application\CustomerAssignment.Common.Application.csproj", "{1CAEBCDA-4DE8-4567-B665-58200F409DC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAssignment.Common.API", "CustomerAssignment.Common.API\CustomerAssignment.Common.API.csproj", "{84C82539-5448-4CA8-A08C-772D26876267}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAssignment.Common.API", "CustomerAssignment.Common.API\CustomerAssignment.Common.API.csproj", "{84C82539-5448-4CA8-A08C-772D26876267}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{6BC7DCD8-6783-49B9-932C-07EC11CE5B3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAssignment.Common.Infrastructure.EventStore", "CustomerAssignment.Common.Infrastructure.EventStore\CustomerAssignment.Common.Infrastructure.EventStore.csproj", "{D7094AA8-37F9-4B9E-9919-EE667FC5431D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,10 @@ Global
 		{84C82539-5448-4CA8-A08C-772D26876267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84C82539-5448-4CA8-A08C-772D26876267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84C82539-5448-4CA8-A08C-772D26876267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7094AA8-37F9-4B9E-9919-EE667FC5431D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7094AA8-37F9-4B9E-9919-EE667FC5431D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7094AA8-37F9-4B9E-9919-EE667FC5431D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7094AA8-37F9-4B9E-9919-EE667FC5431D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +68,8 @@ Global
 		{FF8D0FD6-03C1-4201-91ED-9FA798A6B408} = {2040CB97-9AFD-4597-BFE1-471C4574041F}
 		{1CAEBCDA-4DE8-4567-B665-58200F409DC5} = {CDAF20D0-384D-435B-BF38-8F8047368B35}
 		{84C82539-5448-4CA8-A08C-772D26876267} = {CDAF20D0-384D-435B-BF38-8F8047368B35}
+		{6BC7DCD8-6783-49B9-932C-07EC11CE5B3C} = {CDAF20D0-384D-435B-BF38-8F8047368B35}
+		{D7094AA8-37F9-4B9E-9919-EE667FC5431D} = {6BC7DCD8-6783-49B9-932C-07EC11CE5B3C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22BD3B4B-0FA0-4067-AA86-E39FAC1CA457}

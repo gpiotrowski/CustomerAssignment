@@ -1,7 +1,12 @@
 ﻿using CustomerAssignment.Common.API.Middlewares;
+using CustomerAssignment.Common.Core.Domain;
+using CustomerAssignment.Common.Core.Events;
+using CustomerAssignment.Common.Core.Repositories;
+using CustomerAssignment.Common.Infrastructure.EventStore.InMemoryEventStore;
 using CustomerAssignment.Customers.Application.Mappers;
 using CustomerAssignment.Customers.Application.Services;
 using CustomerAssignment.Customers.Application.Validations;
+using CustomerAssignment.Customers.Domain.Aggregates;
 using CustomerAssignment.Customers.Domain.Buses;
 using CustomerAssignment.Customers.Domain.Factories;
 using CustomerAssignment.Customers.Domain.Handlers;
@@ -32,6 +37,8 @@ namespace CustomerAssignment.Customers.API
             services.AddTransient<ICustomerCommandBus, CustomerCommandBus>();
             services.AddTransient<ICustomerCommandHandler, CustomerCommandHandler>();
             services.AddTransient<ICustomerFactory, CustomerFactory>();
+            services.AddTransient<IRepository<Customer>, Repository<Customer>>();
+            services.AddTransient<IEventStore, InMemoryEventStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
