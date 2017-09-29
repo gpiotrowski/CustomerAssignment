@@ -2,6 +2,8 @@
 using CustomerAssignment.Customers.Application.Mappers;
 using CustomerAssignment.Customers.Application.Services;
 using CustomerAssignment.Customers.Application.Validations;
+using CustomerAssignment.Customers.Domain.Buses;
+using CustomerAssignment.Customers.Domain.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +28,8 @@ namespace CustomerAssignment.Customers.API
             services.AddTransient<ICustomerCommandService, CustomerCommandService>();
             services.AddTransient<ICustomerCommandMapper, CustomerCommandMapper>();
             services.AddTransient<ICustomerCommandValidation, CustomerCommandValidation>();
+            services.AddTransient<ICustomerCommandBus, CustomerCommandBus>();
+            services.AddTransient<ICustomerCommandHandler, CustomerCommandHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

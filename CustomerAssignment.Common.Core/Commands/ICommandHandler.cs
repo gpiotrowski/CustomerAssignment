@@ -2,7 +2,7 @@
 
 namespace CustomerAssignment.Common.Core.Commands
 {
-    public interface ICommand : IMessage
+    public interface ICommandHandler<T> : IHandle<T> where T : ICommand
     {
     }
 }
