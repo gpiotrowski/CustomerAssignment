@@ -48,5 +48,14 @@ namespace CustomerAssignment.Customers.Application.Services
 
             _customerCommandBus.Send(updateCustomerNameCommand);
         }
+
+        public void UpdateCustomerContactInfo(UpdateCustomerContactInfoRequest request)
+        {
+            _customerCommandValidation.Validate(request);
+
+            var updateCustomerContactInfoCommand = _customerCommandMapper.Map(request);
+
+            _customerCommandBus.Send(updateCustomerContactInfoCommand);
+        }
     }
 }

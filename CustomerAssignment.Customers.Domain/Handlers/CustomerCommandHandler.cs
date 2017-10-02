@@ -60,5 +60,19 @@ namespace CustomerAssignment.Customers.Domain.Handlers
 
             _customerRepository.Save(customer);
         }
+
+        public void Handle(UpdateCustomerContactInfoCommand message)
+        {
+            var customer = _customerRepository.GetById(message.CustomerId);
+            var newContactPhone = new ContactPhone()
+            {
+                PhoneNumber = message.PhoneNumber,
+                CountryCode = message.CountryCode
+            };
+
+            customer.UpdateContactPhone(newContactPhone);
+
+            _customerRepository.Save(customer);
+        }
     }
 }

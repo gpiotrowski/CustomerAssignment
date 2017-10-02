@@ -43,5 +43,17 @@ namespace CustomerAssignment.Customers.Application.Mappers
 
             return command;
         }
+
+        public UpdateCustomerContactInfoCommand Map(UpdateCustomerContactInfoRequest request)
+        {
+            var command = new UpdateCustomerContactInfoCommand()
+            {
+                CustomerId = request.CustomerId,
+                CountryCode = request.CountryCode,
+                PhoneNumber = request.PhoneNumber
+            };
+
+            return command;
+        }
     }
 }

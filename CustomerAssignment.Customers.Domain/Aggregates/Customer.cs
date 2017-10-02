@@ -33,6 +33,12 @@ namespace CustomerAssignment.Customers.Domain.Aggregates
             ApplyChange(customerNameUpdatedEvent);
         }
 
+        public void UpdateContactPhone(ContactPhone newContactPhone)
+        {
+            var customerContactPhoneUpdatedEvent = new CustomerContactPhoneUpdatedEvent(newContactPhone);
+            ApplyChange(customerContactPhoneUpdatedEvent);
+        }
+
         private void Apply(CustomerCreatedEvent e)
         {
             Id = e.Id;
@@ -47,6 +53,11 @@ namespace CustomerAssignment.Customers.Domain.Aggregates
         private void Apply(CustomerNameUpdatedEvent e)
         {
             _name = e.NewName;
+        }
+
+        private void Apply(CustomerContactPhoneUpdatedEvent e)
+        {
+            _contactPhone = e.ContactPhone;
         }
     }
 }

@@ -19,5 +19,10 @@ namespace CustomerAssignment.Customers.Application.Validations
         {
             ValidateProperties(request);
         }
+
+        public void Validate(UpdateCustomerContactInfoRequest request)
+        {
+            ValidateProperties(request);
+        }
     }
 }

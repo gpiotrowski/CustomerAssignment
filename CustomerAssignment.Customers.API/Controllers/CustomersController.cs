@@ -28,9 +28,17 @@ namespace CustomerAssignment.Customers.API.Controllers
             return Ok();
         }
 
+        [HttpPost]
         public IActionResult UpdateCustomerName([FromBody]UpdateCustomerNameRequest updateCustomerNameRequest)
         {
             _customerCommandService.UpdateCustomerName(updateCustomerNameRequest);
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult UpdateCustomerContactInfo([FromBody]UpdateCustomerContactInfoRequest updateCustomerContactInfoRequest)
+        {
+            _customerCommandService.UpdateCustomerContactInfo(updateCustomerContactInfoRequest);
             return Ok();
         }
     }

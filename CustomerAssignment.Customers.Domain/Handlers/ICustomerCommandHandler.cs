@@ -6,7 +6,8 @@ namespace CustomerAssignment.Customers.Domain.Handlers
     public interface ICustomerCommandHandler : 
         ICommandHandler<CreateCustomerCommand>,
         ICommandHandler<UpdateCustomerAddressCommand>,
-        ICommandHandler<UpdateCustomerNameCommand>
+        ICommandHandler<UpdateCustomerNameCommand>,
+        ICommandHandler<UpdateCustomerContactInfoCommand>
     {
     }
 }

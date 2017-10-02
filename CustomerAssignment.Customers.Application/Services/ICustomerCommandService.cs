@@ -8,5 +8,6 @@ namespace CustomerAssignment.Customers.Application.Services
         Guid CreateNewCustomer(CreateCustomerRequest request);
         void UpdateCustomerAddress(UpdateCustomerAddressRequest request);
         void UpdateCustomerName(UpdateCustomerNameRequest request);
+        void UpdateCustomerContactInfo(UpdateCustomerContactInfoRequest updateCustomerContactInfoRequest);
     }
 }
