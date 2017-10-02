@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomerAssignment.Common.Application\CustomerAssignment.Common.Application.csproj" />
+    <ProjectReference Include="..\CustomerAssignment.Common.Core\CustomerAssignment.Common.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

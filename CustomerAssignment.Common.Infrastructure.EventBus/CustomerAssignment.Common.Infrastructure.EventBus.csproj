@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomerAssignment.Common.Core\CustomerAssignment.Common.Core.csproj" />
-    <ProjectReference Include="..\CustomerAssignment.Customers.Infrastructure.ReadModel\CustomerAssignment.Customers.Infrastructure.ReadModel.csproj" />
   </ItemGroup>
 
 </Project>

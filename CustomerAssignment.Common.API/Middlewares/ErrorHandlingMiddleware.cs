@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using CustomerAssignment.Common.Application.Exceptions;
 using CustomerAssignment.Common.API.Responses;
+using CustomerAssignment.Common.Core.Domain.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
@@ -42,15 +43,25 @@ namespace CustomerAssignment.Common.API.Middlewares
         {
             var code = HttpStatusCode.InternalServerError;
             string result = String.Empty;
+            ExceptionResponse exceptionResponse;
 
             switch (exception)
             {
                 case InvalidRequestPropertiesException ex:
                     code = HttpStatusCode.BadRequest;
-                    var exceptionResponse = new ExceptionResponse()
+                    exceptionResponse = new ExceptionResponse()
                     {
                         Error = ex.Message,
                         Details = ex.FailedValidationResults
+                    };
+
+                    result = JsonConvert.SerializeObject(exceptionResponse);
+                    break;
+                case AggregateNotFoundException ex:
+                    code = HttpStatusCode.NotFound;
+                    exceptionResponse = new ExceptionResponse()
+                    {
+                        Error = ex.Message
                     };
 
                     result = JsonConvert.SerializeObject(exceptionResponse);

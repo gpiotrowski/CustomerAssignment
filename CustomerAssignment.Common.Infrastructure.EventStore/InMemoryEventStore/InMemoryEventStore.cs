@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using CustomerAssignment.Common.Core.Domain.Exceptions;
+using CustomerAssignment.Common.Core.EventBus;
 using CustomerAssignment.Common.Core.Events;
 
 namespace CustomerAssignment.Common.Infrastructure.EventStore.InMemoryEventStore
 {
     public class InMemoryEventStore : IEventStore
     {
+        private IEventBus EventBus { get; set; }
         private static readonly Dictionary<Guid, List<EventDescriptor>> _current = new Dictionary<Guid, List<EventDescriptor>>();
+
+        public InMemoryEventStore(IEventBus eventBus)
+        {
+            EventBus = eventBus;
+        }
 
         public void SaveEvents(Guid aggregateId, IEnumerable<IEvent> events, int? expectedVersion = null)
         {
@@ -47,6 +54,7 @@ namespace CustomerAssignment.Common.Infrastructure.EventStore.InMemoryEventStore
             foreach (var @event in events)
             {
                 eventDescriptors.Add(new EventDescriptor(aggregateId, @event, @event.Version));
+                EventBus.Publish(@event);
             }
         }
 

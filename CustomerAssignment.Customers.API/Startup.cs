@@ -1,5 +1,8 @@
-﻿using CustomerAssignment.Common.Core.Events;
+﻿using System;
+using CustomerAssignment.Common.Core.EventBus;
+using CustomerAssignment.Common.Core.Events;
 using CustomerAssignment.Common.Core.Repositories;
+using CustomerAssignment.Common.Infrastructure.EventBus.InMemoryEventBus;
 using CustomerAssignment.Common.Infrastructure.EventStore.InMemoryEventStore;
 using CustomerAssignment.Customers.Application.Mappers;
 using CustomerAssignment.Customers.Application.Services;
@@ -9,6 +12,8 @@ using CustomerAssignment.Customers.Domain.Aggregates;
 using CustomerAssignment.Customers.Domain.Buses;
 using CustomerAssignment.Customers.Domain.Factories;
 using CustomerAssignment.Customers.Domain.Handlers;
+using CustomerAssignment.Customers.Infrastructure.ReadModel.InMemory;
+using CustomerAssignment.Customers.Infrastructure.ReadModel.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -38,15 +43,21 @@ namespace CustomerAssignment.Customers.API
             services.AddTransient<ICustomerFactory, CustomerFactory>();
             services.AddTransient<IRepository<Customer>, Repository<Customer>>();
             services.AddTransient<IEventStore, InMemoryEventStore>();
+            services.AddSingleton<IEventBus, InMemoryEventBus>();
+            services.AddTransient<ICustomerEventHandler, CustomerEventHandler>();
+            services.AddSingleton<ICustomerContactCardRepository, CustomerContactCardRepository>();
+            services.AddSingleton<ICustomerListRepository, CustomerListRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            serviceProvider.GetService<ICustomerEventHandler>();
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseMvc(routes =>
