@@ -1,9 +1,10 @@
-﻿using CustomerAssignment.Customers.Application.Requests;
+﻿using System;
+using CustomerAssignment.Customers.Application.Requests;
 
 namespace CustomerAssignment.Customers.Application.Services
 {
     public interface ICustomerCommandService
     {
-        void CreateNewCustomer(CreateCustomerRequest request);
+        Guid CreateNewCustomer(CreateCustomerRequest request);
     }
 }

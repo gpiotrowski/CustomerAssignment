@@ -17,8 +17,8 @@ namespace CustomerAssignment.Customers.API.Controllers
         [HttpPost]
         public IActionResult CreateCustomer([FromBody]CreateCustomerRequest createCustomerRequest)
         {
-            _customerCommandService.CreateNewCustomer(createCustomerRequest);
-            return Ok();
+            var customerId = _customerCommandService.CreateNewCustomer(createCustomerRequest);
+            return Ok(customerId);
         }
     }
 }

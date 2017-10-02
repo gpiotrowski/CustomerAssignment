@@ -25,7 +25,7 @@ namespace CustomerAssignment.Customers.Domain.Handlers
                 LastName = message.CustomerLastName
             };
 
-            var customer = _customerFactory.CreateCustomer(customerName);
+            var customer = _customerFactory.CreateCustomer(message.CustomerId, customerName);
             _customerRepository.Save(customer);
         }
     }

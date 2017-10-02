@@ -11,9 +11,9 @@ namespace CustomerAssignment.Customers.Domain.Aggregates
         private Address _address { get; set; }
         private ContactPhone _contactPhone { get; set; }
 
-        internal Customer(Name name)
+        internal Customer(Guid id, Name name)
         {
-            ApplyChange(new CustomerCreatedEvent(Guid.NewGuid(), name));
+            ApplyChange(new CustomerCreatedEvent(id, name));
         }
 
         private void Apply(CustomerCreatedEvent e)

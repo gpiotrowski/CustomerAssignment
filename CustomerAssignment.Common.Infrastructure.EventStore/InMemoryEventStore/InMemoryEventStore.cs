@@ -43,7 +43,7 @@ namespace CustomerAssignment.Common.Infrastructure.EventStore.InMemoryEventStore
                 throw new AggregateNotFoundException(aggregateId);
             }
 
-            return eventDescriptors.Select(desc => desc.EventData).ToList();
+            return eventDescriptors.Select(desc => desc.EventData).OrderBy(desc => desc.Version).ToList();
         }
 
         private static bool CheckIfLatestEventVersionMatchCurrentAggregateVersion(int? expectedVersion, List<EventDescriptor> eventDescriptors)

@@ -1,4 +1,5 @@
-﻿using CustomerAssignment.Customers.Application.Mappers;
+﻿using System;
+using CustomerAssignment.Customers.Application.Mappers;
 using CustomerAssignment.Customers.Application.Requests;
 using CustomerAssignment.Customers.Application.Validations;
 using CustomerAssignment.Customers.Domain.Buses;
@@ -18,12 +19,16 @@ namespace CustomerAssignment.Customers.Application.Services
             _customerCommandBus = customerCommandBus;
         }
 
-        public void CreateNewCustomer(CreateCustomerRequest request)
+        public Guid CreateNewCustomer(CreateCustomerRequest request)
         {
             _customerCommandValidation.Validate(request);
 
             var createCustomerCommand = _customerCommandMapper.Map(request);
+            createCustomerCommand.CustomerId = Guid.NewGuid();
+
             _customerCommandBus.Send(createCustomerCommand);
+
+            return createCustomerCommand.CustomerId;
         }
     }
 }
