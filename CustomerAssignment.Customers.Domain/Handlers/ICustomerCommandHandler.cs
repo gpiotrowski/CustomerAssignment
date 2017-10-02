@@ -3,7 +3,9 @@ using CustomerAssignment.Customers.Domain.Commands;
 
 namespace CustomerAssignment.Customers.Domain.Handlers
 {
-    public interface ICustomerCommandHandler : ICommandHandler<CreateCustomerCommand>
+    public interface ICustomerCommandHandler : 
+        ICommandHandler<CreateCustomerCommand>,
+        ICommandHandler<UpdateCustomerAddressCommand>
     {
     }
 }

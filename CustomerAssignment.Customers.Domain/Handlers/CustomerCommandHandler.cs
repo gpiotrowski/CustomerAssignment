@@ -28,5 +28,23 @@ namespace CustomerAssignment.Customers.Domain.Handlers
             var customer = _customerFactory.CreateCustomer(message.CustomerId, customerName);
             _customerRepository.Save(customer);
         }
+
+        public void Handle(UpdateCustomerAddressCommand message)
+        {
+            var customer = _customerRepository.GetById(message.CustomerId);
+            var newAddress = new Address()
+            {
+                AppartmentNumber = message.AppartmentNumber,
+                Country = message.Country,
+                City = message.City,
+                Street = message.Street,
+                ZipCode = message.ZipCode,
+                HouseNumber = message.HouseNumber
+            };
+
+            customer.UpdateAddress(newAddress);
+
+            _customerRepository.Save(customer);
+        }
     }
 }

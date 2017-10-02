@@ -8,29 +8,15 @@ namespace CustomerAssignment.Common.Infrastructure.EventStore.InMemoryEventStore
 {
     public class InMemoryEventStore : IEventStore
     {
-        private readonly Dictionary<Guid, List<EventDescriptor>> _current = new Dictionary<Guid, List<EventDescriptor>>();
+        private static readonly Dictionary<Guid, List<EventDescriptor>> _current = new Dictionary<Guid, List<EventDescriptor>>();
 
         public void SaveEvents(Guid aggregateId, IEnumerable<IEvent> events, int? expectedVersion = null)
         {
-            List<EventDescriptor> eventDescriptors;
-
-            if (!_current.TryGetValue(aggregateId, out eventDescriptors))
+            expectedVersion = SetExpectedVersionIfNecessary(events, expectedVersion);
+            lock (_current)
             {
-                eventDescriptors = new List<EventDescriptor>();
-                _current.Add(aggregateId, eventDescriptors);
-            }
-            else if (CheckIfLatestEventVersionMatchCurrentAggregateVersion(expectedVersion, eventDescriptors))
-            {
-                throw new ConcurrencyException(aggregateId);
-            }
-
-            var i = expectedVersion ?? 0;
-            foreach (var @event in events)
-            {
-                i++;
-                @event.Version = i;
-
-                eventDescriptors.Add(new EventDescriptor(aggregateId, @event, i));
+                List<EventDescriptor> eventDescriptors = GetEventDescriptors(aggregateId, expectedVersion);
+                AddPendingEventsToEventDescriptors(aggregateId, events, eventDescriptors);
             }
         }
 
@@ -46,7 +32,40 @@ namespace CustomerAssignment.Common.Infrastructure.EventStore.InMemoryEventStore
             return eventDescriptors.Select(desc => desc.EventData).OrderBy(desc => desc.Version).ToList();
         }
 
-        private static bool CheckIfLatestEventVersionMatchCurrentAggregateVersion(int? expectedVersion, List<EventDescriptor> eventDescriptors)
+        private int SetExpectedVersionIfNecessary(IEnumerable<IEvent> events, int? expectedVersion)
+        {
+            if (expectedVersion == null)
+            {
+                expectedVersion = events.OrderBy(x => x.Version).First().Version - 1;
+            }
+
+            return (int)expectedVersion;
+        }
+
+        private void AddPendingEventsToEventDescriptors(Guid aggregateId, IEnumerable<IEvent> events, List<EventDescriptor> eventDescriptors)
+        {
+            foreach (var @event in events)
+            {
+                eventDescriptors.Add(new EventDescriptor(aggregateId, @event, @event.Version));
+            }
+        }
+
+        private List<EventDescriptor> GetEventDescriptors(Guid aggregateId, int? expectedVersion)
+        {
+            if (!_current.TryGetValue(aggregateId, out List<EventDescriptor> eventDescriptors))
+            {
+                eventDescriptors = new List<EventDescriptor>();
+                _current.Add(aggregateId, eventDescriptors);
+            }
+            else if (CheckIfLatestEventVersionMatchCurrentAggregateVersion(expectedVersion, eventDescriptors))
+            {
+                throw new ConcurrencyException(aggregateId);
+            }
+
+            return eventDescriptors;
+        }
+
+        private bool CheckIfLatestEventVersionMatchCurrentAggregateVersion(int? expectedVersion, List<EventDescriptor> eventDescriptors)
         {
             return expectedVersion != null && eventDescriptors[eventDescriptors.Count - 1].Version != expectedVersion;
         }

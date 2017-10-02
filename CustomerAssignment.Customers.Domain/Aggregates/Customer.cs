@@ -11,16 +11,31 @@ namespace CustomerAssignment.Customers.Domain.Aggregates
         private Address _address { get; set; }
         private ContactPhone _contactPhone { get; set; }
 
+        private Customer()
+        {
+        }
+
         internal Customer(Guid id, Name name)
         {
             ApplyChange(new CustomerCreatedEvent(id, name));
         }
 
+
+        public void UpdateAddress(Address newAddress)
+        {
+            var customerAddressUpdatedEvent = new CustomerAddressUpdatedEvent(newAddress);
+            ApplyChange(customerAddressUpdatedEvent);
+        }
+
         private void Apply(CustomerCreatedEvent e)
         {
             Id = e.Id;
-            Version = e.Version;
             _name = e.Name;
+        }
+
+        private void Apply(CustomerAddressUpdatedEvent e)
+        {
+            _address = e.NewAddress;
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using CustomerAssignment.Common.Application.Exceptions;
 
 namespace CustomerAssignment.Common.Application.Validations
 {
     public class ValidationBase
     {
-        protected List<FailedValidation> ValidateProperties(object objectToValidate)
+        protected void ValidateProperties(object objectToValidate)
         {
             ICollection<ValidationResult> validationResults = new List<ValidationResult>();
 
@@ -14,7 +16,10 @@ namespace CustomerAssignment.Common.Application.Validations
 
             var failedValidations = MapToFailedValidation(validationResults);
 
-            return failedValidations;
+            if (failedValidations.Any())
+            {
+                throw new InvalidRequestPropertiesException(failedValidations);
+            }
         }
 
         private List<FailedValidation> MapToFailedValidation(ICollection<ValidationResult> validationResults)

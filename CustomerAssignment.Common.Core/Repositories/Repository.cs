@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using CustomerAssignment.Common.Core.Domain;
+using CustomerAssignment.Common.Core.Domain.Exceptions;
+using CustomerAssignment.Common.Core.Domain.Factories;
 using CustomerAssignment.Common.Core.Events;
 
 namespace CustomerAssignment.Common.Core.Repositories
@@ -20,7 +23,20 @@ namespace CustomerAssignment.Common.Core.Repositories
 
         public T GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return LoadAggregate(id);
+        }
+
+        private T LoadAggregate(Guid aggregateId)
+        {
+            var events = _storage.GetEventsForAggregate(aggregateId);
+            if (!events.Any())
+            {
+                throw new AggregateNotFoundException(typeof(T), aggregateId);
+            }
+
+            var aggregate = AggregateFactory.CreateAggregate<T>();
+            aggregate.LoadFromHistory(events);
+            return aggregate;
         }
     }
 }

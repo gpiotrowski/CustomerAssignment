@@ -20,5 +20,12 @@ namespace CustomerAssignment.Customers.API.Controllers
             var customerId = _customerCommandService.CreateNewCustomer(createCustomerRequest);
             return Ok(customerId);
         }
+
+        [HttpPost]
+        public IActionResult UpdateCustomerAddress([FromBody]UpdateCustomerAddressRequest updateCustomerAddressRequest)
+        {
+            _customerCommandService.UpdateCustomer(updateCustomerAddressRequest);
+            return Ok();
+        }
     }
 }

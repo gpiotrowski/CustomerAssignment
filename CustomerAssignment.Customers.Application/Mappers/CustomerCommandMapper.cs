@@ -15,5 +15,21 @@ namespace CustomerAssignment.Customers.Application.Mappers
 
             return command;
         }
+
+        public UpdateCustomerAddressCommand Map(UpdateCustomerAddressRequest request)
+        {
+            var command = new UpdateCustomerAddressCommand()
+            {
+                CustomerId = request.CustomerId,
+                AppartmentNumber = request.AppartmentNumber,
+                City = request.City,
+                Country = request.Country,
+                HouseNumber = request.HouseNumber,
+                Street = request.Street,
+                ZipCode = request.ZipCode
+            };
+
+            return command;
+        }
     }
 }
