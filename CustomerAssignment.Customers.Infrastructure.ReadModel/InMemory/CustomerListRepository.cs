@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using CustomerAssignment.Customers.Infrastructure.ReadModel.Interfaces;
 using CustomerAssignment.Customers.Infrastructure.ReadModel.Models;
 
@@ -9,16 +10,15 @@ namespace CustomerAssignment.Customers.Infrastructure.ReadModel.InMemory
     public class CustomerListRepository : ICustomerListRepository
     {
         private ConcurrentDictionary<Guid, CustomerListEntryReadModel> _customerListSource;
-        
 
         public CustomerListRepository()
         {
             InitializeSources();
         }
 
-        private void InitializeSources()
+        public List<CustomerListEntryReadModel> GetCustomerList()
         {
-            _customerListSource = new ConcurrentDictionary<Guid, CustomerListEntryReadModel>();
+            return _customerListSource.Values.ToList();
         }
 
         public CustomerListEntryReadModel GetCustomerListEntry(Guid customerId)
@@ -29,6 +29,11 @@ namespace CustomerAssignment.Customers.Infrastructure.ReadModel.InMemory
         public void Save(CustomerListEntryReadModel customer)
         {
             _customerListSource.AddOrUpdate(customer.CustomerId, customer, (id, model) => model);
+        }
+
+        private void InitializeSources()
+        {
+            _customerListSource = new ConcurrentDictionary<Guid, CustomerListEntryReadModel>();
         }
     }
 }

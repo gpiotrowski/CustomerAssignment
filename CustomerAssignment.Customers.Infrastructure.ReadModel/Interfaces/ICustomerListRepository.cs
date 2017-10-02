@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CustomerAssignment.Customers.Infrastructure.ReadModel.Models;
 
 namespace CustomerAssignment.Customers.Infrastructure.ReadModel.Interfaces
@@ -7,5 +8,6 @@ namespace CustomerAssignment.Customers.Infrastructure.ReadModel.Interfaces
     {
         void Save(CustomerListEntryReadModel customer);
         CustomerListEntryReadModel GetCustomerListEntry(Guid customerId);
+        List<CustomerListEntryReadModel> GetCustomerList();
     }
 }

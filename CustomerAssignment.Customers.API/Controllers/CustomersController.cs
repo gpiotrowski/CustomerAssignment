@@ -9,10 +9,12 @@ namespace CustomerAssignment.Customers.API.Controllers
     public class CustomersController : Controller
     {
         private readonly ICustomerCommandService _customerCommandService;
+        private readonly ICustomerQueryService _customerQueryService;
 
-        public CustomersController(ICustomerCommandService customerCommandService)
+        public CustomersController(ICustomerCommandService customerCommandService, ICustomerQueryService customerQueryService)
         {
             _customerCommandService = customerCommandService;
+            _customerQueryService = customerQueryService;
         }
 
         [HttpPost]
@@ -48,6 +50,20 @@ namespace CustomerAssignment.Customers.API.Controllers
         {
             _customerCommandService.DeleteCustomer(customerId);
             return Ok();
+        }
+
+        [HttpGet]
+        public IActionResult GetCustomerList()
+        {
+            var customerList = _customerQueryService.GetCustomerList();
+            return Ok(customerList);
+        }
+
+        [HttpGet]
+        public IActionResult GetCustomerContactCard(Guid customerId)
+        {
+            var customerContactCard = _customerQueryService.GetContactCard(customerId);
+            return Ok(customerContactCard);
         }
     }
 }

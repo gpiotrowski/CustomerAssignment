@@ -47,6 +47,7 @@ namespace CustomerAssignment.Customers.API
             services.AddTransient<ICustomerEventHandler, CustomerEventHandler>();
             services.AddSingleton<ICustomerContactCardRepository, CustomerContactCardRepository>();
             services.AddSingleton<ICustomerListRepository, CustomerListRepository>();
+            services.AddTransient<ICustomerQueryService, CustomerQueryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
