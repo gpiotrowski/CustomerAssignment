@@ -7,7 +7,8 @@ namespace CustomerAssignment.Customers.Domain.Handlers
         ICommandHandler<CreateCustomerCommand>,
         ICommandHandler<UpdateCustomerAddressCommand>,
         ICommandHandler<UpdateCustomerNameCommand>,
-        ICommandHandler<UpdateCustomerContactInfoCommand>
+        ICommandHandler<UpdateCustomerContactInfoCommand>,
+        ICommandHandler<DeleteCustomerCommand>
     {
     }
 }

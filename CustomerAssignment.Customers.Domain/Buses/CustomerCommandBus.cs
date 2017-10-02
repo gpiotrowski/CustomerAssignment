@@ -31,5 +31,10 @@ namespace CustomerAssignment.Customers.Domain.Buses
         {
             _customerCommandHandler.Handle(command);
         }
+
+        public void Send(DeleteCustomerCommand command)
+        {
+            _customerCommandHandler.Handle(command);
+        }
     }
 }

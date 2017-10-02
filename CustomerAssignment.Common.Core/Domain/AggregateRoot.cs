@@ -12,6 +12,7 @@ namespace CustomerAssignment.Common.Core.Domain
 
         public Guid Id { get; protected set; }
         public int Version { get; protected set; }
+        public bool SoftDelete { get; protected set; }
 
         public IEvent[] FlushUncommitedChanges()
         {

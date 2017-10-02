@@ -74,5 +74,14 @@ namespace CustomerAssignment.Customers.Domain.Handlers
 
             _customerRepository.Save(customer);
         }
+
+        public void Handle(DeleteCustomerCommand message)
+        {
+            var customer = _customerRepository.GetById(message.CustomerId);
+
+            customer.DeleteCustomer();
+
+            _customerRepository.Save(customer);
+        }
     }
 }

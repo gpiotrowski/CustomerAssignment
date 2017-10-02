@@ -1,6 +1,7 @@
 ﻿using System;
 using CustomerAssignment.Common.Core.Domain;
 using CustomerAssignment.Customers.Domain.Events;
+using CustomerAssignment.Customers.Domain.Exceptions;
 using CustomerAssignment.Customers.Domain.ValueObjects;
 
 namespace CustomerAssignment.Customers.Domain.Aggregates
@@ -39,6 +40,17 @@ namespace CustomerAssignment.Customers.Domain.Aggregates
             ApplyChange(customerContactPhoneUpdatedEvent);
         }
 
+        public void DeleteCustomer()
+        {
+            if (SoftDelete)
+            {
+                throw new ClientAlreadyDeletedException(Id);
+            }
+
+            var customerDeletedEvent = new CustomerDeletedEvent();
+            ApplyChange(customerDeletedEvent);
+        }
+
         private void Apply(CustomerCreatedEvent e)
         {
             Id = e.Id;
@@ -58,6 +70,11 @@ namespace CustomerAssignment.Customers.Domain.Aggregates
         private void Apply(CustomerContactPhoneUpdatedEvent e)
         {
             _contactPhone = e.ContactPhone;
+        }
+
+        private void Apply(CustomerDeletedEvent e)
+        {
+            SoftDelete = true;
         }
     }
 }

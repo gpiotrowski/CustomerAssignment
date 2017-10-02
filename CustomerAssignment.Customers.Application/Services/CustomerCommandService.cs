@@ -3,6 +3,7 @@ using CustomerAssignment.Customers.Application.Mappers;
 using CustomerAssignment.Customers.Application.Requests;
 using CustomerAssignment.Customers.Application.Validations;
 using CustomerAssignment.Customers.Domain.Buses;
+using CustomerAssignment.Customers.Domain.Commands;
 
 namespace CustomerAssignment.Customers.Application.Services
 {
@@ -56,6 +57,13 @@ namespace CustomerAssignment.Customers.Application.Services
             var updateCustomerContactInfoCommand = _customerCommandMapper.Map(request);
 
             _customerCommandBus.Send(updateCustomerContactInfoCommand);
+        }
+
+        public void DeleteCustomer(Guid customerId)
+        {
+            var deleteCustomerCommand = new DeleteCustomerCommand(customerId);
+
+            _customerCommandBus.Send(deleteCustomerCommand);
         }
     }
 }

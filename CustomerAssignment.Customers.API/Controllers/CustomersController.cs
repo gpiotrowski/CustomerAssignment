@@ -1,4 +1,5 @@
-﻿using CustomerAssignment.Customers.Application.Requests;
+﻿using System;
+using CustomerAssignment.Customers.Application.Requests;
 using CustomerAssignment.Customers.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -39,6 +40,13 @@ namespace CustomerAssignment.Customers.API.Controllers
         public IActionResult UpdateCustomerContactInfo([FromBody]UpdateCustomerContactInfoRequest updateCustomerContactInfoRequest)
         {
             _customerCommandService.UpdateCustomerContactInfo(updateCustomerContactInfoRequest);
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteCustomer(Guid customerId)
+        {
+            _customerCommandService.DeleteCustomer(customerId);
             return Ok();
         }
     }

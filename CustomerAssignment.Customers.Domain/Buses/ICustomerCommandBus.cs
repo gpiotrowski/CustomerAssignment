@@ -7,7 +7,8 @@ namespace CustomerAssignment.Customers.Domain.Buses
         ICommandSender<CreateCustomerCommand>,
         ICommandSender<UpdateCustomerAddressCommand>,
         ICommandSender<UpdateCustomerNameCommand>,
-        ICommandSender<UpdateCustomerContactInfoCommand>
+        ICommandSender<UpdateCustomerContactInfoCommand>,
+        ICommandSender<DeleteCustomerCommand>
     {
     }
 }
