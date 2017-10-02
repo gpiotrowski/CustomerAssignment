@@ -1,11 +1,10 @@
-﻿using CustomerAssignment.Common.API.Middlewares;
-using CustomerAssignment.Common.Core.Domain;
-using CustomerAssignment.Common.Core.Events;
+﻿using CustomerAssignment.Common.Core.Events;
 using CustomerAssignment.Common.Core.Repositories;
 using CustomerAssignment.Common.Infrastructure.EventStore.InMemoryEventStore;
 using CustomerAssignment.Customers.Application.Mappers;
 using CustomerAssignment.Customers.Application.Services;
 using CustomerAssignment.Customers.Application.Validations;
+using CustomerAssignment.Customers.API.Middlewares;
 using CustomerAssignment.Customers.Domain.Aggregates;
 using CustomerAssignment.Customers.Domain.Buses;
 using CustomerAssignment.Customers.Domain.Factories;

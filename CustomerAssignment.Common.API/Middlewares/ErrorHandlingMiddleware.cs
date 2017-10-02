@@ -29,7 +29,16 @@ namespace CustomerAssignment.Common.API.Middlewares
             }
         }
 
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
+        private Task HandleExceptionAsync(HttpContext context, Exception exception)
+        {
+            var handledExceptionResult = HandleException(exception);
+
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)handledExceptionResult.statusCode;
+            return context.Response.WriteAsync(handledExceptionResult.exceptionResponse);
+        }
+
+        protected virtual (HttpStatusCode statusCode, string exceptionResponse) HandleException(Exception exception)
         {
             var code = HttpStatusCode.InternalServerError;
             string result = String.Empty;
@@ -48,9 +57,7 @@ namespace CustomerAssignment.Common.API.Middlewares
                     break;
             }
 
-            context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)code;
-            return context.Response.WriteAsync(result);
+            return (code, result);
         }
     }
 }
