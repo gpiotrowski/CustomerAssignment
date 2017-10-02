@@ -6,6 +6,7 @@ namespace CustomerAssignment.Customers.Application.Services
     public interface ICustomerCommandService
     {
         Guid CreateNewCustomer(CreateCustomerRequest request);
-        void UpdateCustomer(UpdateCustomerAddressRequest request);
+        void UpdateCustomerAddress(UpdateCustomerAddressRequest request);
+        void UpdateCustomerName(UpdateCustomerNameRequest request);
     }
 }

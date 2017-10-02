@@ -31,13 +31,22 @@ namespace CustomerAssignment.Customers.Application.Services
             return createCustomerCommand.CustomerId;
         }
 
-        public void UpdateCustomer(UpdateCustomerAddressRequest request)
+        public void UpdateCustomerAddress(UpdateCustomerAddressRequest request)
         {
             _customerCommandValidation.Validate(request);
 
             var updateCustomerAddressCommand = _customerCommandMapper.Map(request);
 
             _customerCommandBus.Send(updateCustomerAddressCommand);
+        }
+
+        public void UpdateCustomerName(UpdateCustomerNameRequest request)
+        {
+            _customerCommandValidation.Validate(request);
+
+            var updateCustomerNameCommand = _customerCommandMapper.Map(request);
+
+            _customerCommandBus.Send(updateCustomerNameCommand);
         }
     }
 }

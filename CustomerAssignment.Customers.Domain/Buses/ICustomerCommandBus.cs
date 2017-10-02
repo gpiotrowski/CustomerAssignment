@@ -5,7 +5,8 @@ namespace CustomerAssignment.Customers.Domain.Buses
 {
     public interface ICustomerCommandBus : 
         ICommandSender<CreateCustomerCommand>,
-        ICommandSender<UpdateCustomerAddressCommand>
+        ICommandSender<UpdateCustomerAddressCommand>,
+        ICommandSender<UpdateCustomerNameCommand>
     {
     }
 }

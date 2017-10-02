@@ -21,5 +21,10 @@ namespace CustomerAssignment.Customers.Domain.Buses
         {
             _customerCommandHandler.Handle(command);
         }
+
+        public void Send(UpdateCustomerNameCommand command)
+        {
+            _customerCommandHandler.Handle(command);
+        }
     }
 }

@@ -24,7 +24,13 @@ namespace CustomerAssignment.Customers.API.Controllers
         [HttpPost]
         public IActionResult UpdateCustomerAddress([FromBody]UpdateCustomerAddressRequest updateCustomerAddressRequest)
         {
-            _customerCommandService.UpdateCustomer(updateCustomerAddressRequest);
+            _customerCommandService.UpdateCustomerAddress(updateCustomerAddressRequest);
+            return Ok();
+        }
+
+        public IActionResult UpdateCustomerName([FromBody]UpdateCustomerNameRequest updateCustomerNameRequest)
+        {
+            _customerCommandService.UpdateCustomerName(updateCustomerNameRequest);
             return Ok();
         }
     }

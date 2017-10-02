@@ -14,5 +14,10 @@ namespace CustomerAssignment.Customers.Application.Validations
         {
             ValidateProperties(request);
         }
+
+        public void Validate(UpdateCustomerNameRequest request)
+        {
+            ValidateProperties(request);
+        }
     }
 }

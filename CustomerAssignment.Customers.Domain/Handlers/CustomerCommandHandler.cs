@@ -46,5 +46,19 @@ namespace CustomerAssignment.Customers.Domain.Handlers
 
             _customerRepository.Save(customer);
         }
+
+        public void Handle(UpdateCustomerNameCommand message)
+        {
+            var customer = _customerRepository.GetById(message.CustomerId);
+            var newName = new Name()
+            {
+                FirstName = message.FirstName,
+                LastName = message.LastName
+            };
+
+            customer.UpdateName(newName);
+
+            _customerRepository.Save(customer);
+        }
     }
 }

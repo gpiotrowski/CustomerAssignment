@@ -31,5 +31,17 @@ namespace CustomerAssignment.Customers.Application.Mappers
 
             return command;
         }
+
+        public UpdateCustomerNameCommand Map(UpdateCustomerNameRequest request)
+        {
+            var command = new UpdateCustomerNameCommand()
+            {
+                CustomerId = request.CustomerId,
+                LastName = request.LastName,
+                FirstName = request.FirstName
+            };
+
+            return command;
+        }
     }
 }

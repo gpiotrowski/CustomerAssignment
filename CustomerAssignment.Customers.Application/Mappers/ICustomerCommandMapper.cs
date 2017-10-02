@@ -7,5 +7,6 @@ namespace CustomerAssignment.Customers.Application.Mappers
     {
         CreateCustomerCommand Map(CreateCustomerRequest request);
         UpdateCustomerAddressCommand Map(UpdateCustomerAddressRequest request);
+        UpdateCustomerNameCommand Map(UpdateCustomerNameRequest request);
     }
 }

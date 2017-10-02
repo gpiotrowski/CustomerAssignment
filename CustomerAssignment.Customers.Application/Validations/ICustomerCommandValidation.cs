@@ -6,5 +6,6 @@ namespace CustomerAssignment.Customers.Application.Validations
     {
         void Validate(CreateCustomerRequest request);
         void Validate(UpdateCustomerAddressRequest request);
+        void Validate(UpdateCustomerNameRequest request);
     }
 }
