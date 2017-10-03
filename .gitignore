@@ -259,3 +259,7 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+CustomerAssignment.Clients.Website/wwwroot/app/**/*.js
+CustomerAssignment.Clients.Website/wwwroot/app/**/*.js.map
+CustomerAssignment.Clients.Website/wwwroot/lib

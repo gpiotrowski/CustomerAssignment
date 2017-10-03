@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\app\customerAssignment.module.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="node_modules\%40types\angular\package.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="node_modules\%40types\angular\LICENSE" />
+    <None Include="node_modules\%40types\angular\README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="node_modules\%40types\angular\index.d.ts" />
+    <TypeScriptCompile Include="node_modules\%40types\angular\jqlite.d.ts" />
+    <TypeScriptCompile Include="wwwroot\app\customerAssignment.module.ts" />
+  </ItemGroup>
+
+</Project>

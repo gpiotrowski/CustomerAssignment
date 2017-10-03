@@ -23,11 +23,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAssignment.Common.Infrastructure.EventStore", "CustomerAssignment.Common.Infrastructure.EventStore\CustomerAssignment.Common.Infrastructure.EventStore.csproj", "{D7094AA8-37F9-4B9E-9919-EE667FC5431D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAssignment.Common.Infrastructure.EventBus", "CustomerAssignment.Common.Infrastructure.EventBus\CustomerAssignment.Common.Infrastructure.EventBus.csproj", "{4514760F-B629-4936-B73E-B292842C2AA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAssignment.Common.Infrastructure.EventBus", "CustomerAssignment.Common.Infrastructure.EventBus\CustomerAssignment.Common.Infrastructure.EventBus.csproj", "{4514760F-B629-4936-B73E-B292842C2AA9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CF5ABB11-09DF-4E38-BD16-974A21B61E14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAssignment.Customers.Infrastructure.ReadModel", "CustomerAssignment.Customers.Infrastructure.ReadModel\CustomerAssignment.Customers.Infrastructure.ReadModel.csproj", "{701DDA9C-8653-45E4-A751-F94163A046DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAssignment.Customers.Infrastructure.ReadModel", "CustomerAssignment.Customers.Infrastructure.ReadModel\CustomerAssignment.Customers.Infrastructure.ReadModel.csproj", "{701DDA9C-8653-45E4-A751-F94163A046DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{0178A2FC-A6A9-4C93-8EEB-5EA179EF2797}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAssignment.Clients.Website", "CustomerAssignment.Clients.Website\CustomerAssignment.Clients.Website.csproj", "{F2B3EDCB-9165-4043-B761-7770D2C63617}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +75,10 @@ Global
 		{701DDA9C-8653-45E4-A751-F94163A046DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{701DDA9C-8653-45E4-A751-F94163A046DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{701DDA9C-8653-45E4-A751-F94163A046DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2B3EDCB-9165-4043-B761-7770D2C63617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2B3EDCB-9165-4043-B761-7770D2C63617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2B3EDCB-9165-4043-B761-7770D2C63617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2B3EDCB-9165-4043-B761-7770D2C63617}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +95,7 @@ Global
 		{4514760F-B629-4936-B73E-B292842C2AA9} = {6BC7DCD8-6783-49B9-932C-07EC11CE5B3C}
 		{CF5ABB11-09DF-4E38-BD16-974A21B61E14} = {2040CB97-9AFD-4597-BFE1-471C4574041F}
 		{701DDA9C-8653-45E4-A751-F94163A046DE} = {CF5ABB11-09DF-4E38-BD16-974A21B61E14}
+		{F2B3EDCB-9165-4043-B761-7770D2C63617} = {0178A2FC-A6A9-4C93-8EEB-5EA179EF2797}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22BD3B4B-0FA0-4067-AA86-E39FAC1CA457}
