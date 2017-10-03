@@ -29,5 +29,10 @@ namespace CustomerAssignment.Customers.Infrastructure.ReadModel.InMemory
         {
             _customerContactCardSource.AddOrUpdate(customerContactCard.CustomerId, customerContactCard, (guid, model) => model);
         }
+
+        public void Delete(Guid customerId)
+        {
+            _customerContactCardSource.Remove(customerId, out CustomerContactCardReadModel removedCustomer);
+        }
     }
 }

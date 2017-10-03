@@ -31,6 +31,11 @@ namespace CustomerAssignment.Customers.Infrastructure.ReadModel.InMemory
             _customerListSource.AddOrUpdate(customer.CustomerId, customer, (id, model) => model);
         }
 
+        public void Delete(Guid customerId)
+        {
+            _customerListSource.Remove(customerId, out CustomerListEntryReadModel removedCustomer);
+        }
+
         private void InitializeSources()
         {
             _customerListSource = new ConcurrentDictionary<Guid, CustomerListEntryReadModel>();

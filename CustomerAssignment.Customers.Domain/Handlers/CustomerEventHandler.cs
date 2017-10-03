@@ -22,6 +22,7 @@ namespace CustomerAssignment.Customers.Domain.Handlers
             _eventBus.RegisterHandler<CustomerNameUpdatedEvent>(Handle);
             _eventBus.RegisterHandler<CustomerAddressUpdatedEvent>(Handle);
             _eventBus.RegisterHandler<CustomerContactPhoneUpdatedEvent>(Handle);
+            _eventBus.RegisterHandler<CustomerDeletedEvent>(Handle);
         }
 
         public void Handle(CustomerCreatedEvent @event)
@@ -40,7 +41,7 @@ namespace CustomerAssignment.Customers.Domain.Handlers
                 Name = new CustomerNameReadModel()
                 {
                     FirstName = @event.Name.FirstName,
-                    LastName = @event.Name.FirstName
+                    LastName = @event.Name.LastName
                 }
             };
             _customerContactCardRepository.Save(customerContactCard);
@@ -89,6 +90,12 @@ namespace CustomerAssignment.Customers.Domain.Handlers
             };
 
             _customerContactCardRepository.Save(customerContactCard);
+        }
+
+        public void Handle(CustomerDeletedEvent @event)
+        {
+            _customerListRepository.Delete(@event.Id);
+            _customerContactCardRepository.Delete(@event.Id);
         }
     }
 }

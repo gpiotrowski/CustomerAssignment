@@ -9,5 +9,6 @@ namespace CustomerAssignment.Customers.Infrastructure.ReadModel.Interfaces
         void Save(CustomerListEntryReadModel customer);
         CustomerListEntryReadModel GetCustomerListEntry(Guid customerId);
         List<CustomerListEntryReadModel> GetCustomerList();
+        void Delete(Guid customerId);
     }
 }

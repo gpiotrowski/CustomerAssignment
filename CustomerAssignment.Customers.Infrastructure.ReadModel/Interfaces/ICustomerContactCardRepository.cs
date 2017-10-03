@@ -7,5 +7,6 @@ namespace CustomerAssignment.Customers.Infrastructure.ReadModel.Interfaces
     {
         CustomerContactCardReadModel GetCustomerContactCard(Guid customerId);
         void Save(CustomerContactCardReadModel customerContactCard);
+        void Delete(Guid customerId);
     }
 }
