@@ -23,7 +23,13 @@
     <script src="app/customers/customers-list.controller.js"></script>
     <script src="app/customers/customers-create.controller.js"></script>
     <script src="app/customers/customers-info.controller.js"></script>
+    <script src="app/customers/customers-edit.controller.js"></script>
     <script src="app/customers/customers.service.js"></script>
+
+    <script src="app/customers/models/customerContactCard.js"></script>
+    <script src="app/customers/models/customerListEntry.js"></script>
+    <script src="app/customers/requests/createNewCustomerRequest.js"></script>
+    <script src="app/customers/requests/updateCustomerNameRequest.js"></script>
 </head>
 <body ng-app="customerAssignment">
 
@@ -33,7 +39,7 @@
 </ul>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <div ui-view></div>
         </div>
     </div>

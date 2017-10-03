@@ -28,6 +28,11 @@
                 {
                     url: "/info?id",
                     templateUrl: modulePath + "customers-info.html"
+                })
+                .state("customers.edit",
+                {
+                    url: "/edit?id",
+                    templateUrl: modulePath + "customers-edit.html"
                 });
         }
     }

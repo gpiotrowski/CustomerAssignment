@@ -1,0 +1,11 @@
+﻿<div ng-controller="CustomerEditController as customerEditVM">
+    <ul class="nav nav-tabs">
+        <li ng-class="{'active': customerEditVM.currentTab == 0}"><a ng-click="customerEditVM.currentTab = 0">Personal name</a></li>
+        <li ng-class="{'active': customerEditVM.currentTab == 1}"><a ng-click="customerEditVM.currentTab = 1">Address</a></li>
+        <li ng-class="{'active': customerEditVM.currentTab == 2}"><a ng-click="customerEditVM.currentTab = 2">Contact</a></li>
+    </ul>
+
+    <div ng-show="customerEditVM.currentTab == 0" ng-include="'app/customers/customers-edit-name.html'"></div>
+    <div ng-show="customerEditVM.currentTab == 1" ng-include="'app/customers/customers-edit-address.html'"></div>
+    <div ng-show="customerEditVM.currentTab == 2" ng-include="'app/customers/customers-edit-contact.html'"></div>
+</div>

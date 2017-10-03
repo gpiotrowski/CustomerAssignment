@@ -4,6 +4,7 @@
         getCustomerListEntires(): angular.IPromise<Models.CustomerListEntry[] | void>;
         createCustomer(newCustomer: Request.CreateNewCustomerRequest): angular.IPromise<string | void>;
         getCustomerInfo(customerId: string): angular.IPromise<any>;
+        updateCustomerName(request: CustomerAssignment.Customers.Request.UpdateCustomerNameRequest): angular.IPromise<void>;
     }
 
     class CustomersService implements ICustomersService {
@@ -38,6 +39,16 @@
 
             return vm.$http.get(`${vm.customersEndpoint}api/Customers/GetCustomerContactCard?customerId=${customerId}`).then(
                 (response) => response.data as Models.CustomerContactCard,
+                (error) => {
+                    vm.$log.error(error);
+                });
+        }
+
+        updateCustomerName(updateCustomerNameRequest: CustomerAssignment.Customers.Request.UpdateCustomerNameRequest): angular.IPromise<void> {
+            var vm = this;
+
+            return vm.$http.post(`${vm.customersEndpoint}api/Customers/UpdateCustomerName`, updateCustomerNameRequest).then(
+                (response) => { },
                 (error) => {
                     vm.$log.error(error);
                 });

@@ -1,7 +1,8 @@
 ﻿namespace CustomerAssignment.Customers {
 
-    class CustomerInfoController {
+    class CustomerEditController {
 
+        currentTab = 0;
         customerInfo: Models.CustomerContactCard;
 
         static $inject = ['$state', '$stateParams', '$log', 'customersService'];
@@ -13,15 +14,21 @@
             if (!angular.isUndefined(customerId)) {
                 vm.loadData(customerId);
             } else {
-                $log.error("No id passed in param! (CustomerInfoController)");
+                $log.error("No id passed in param! (CustomerEditController)");
             }
-            
         }
 
-        public editCustomer() {
+        public updateCustomerName() {
             var vm = this;
 
-            vm.$state.go('customers.edit', { id: vm.customerInfo.customerId });
+            var updateCustomerNameRequest = new Request.UpdateCustomerNameRequest();
+            updateCustomerNameRequest.customerId = vm.customerInfo.customerId;
+            updateCustomerNameRequest.firstName = vm.customerInfo.name.firstName;
+            updateCustomerNameRequest.lastName = vm.customerInfo.name.lastName;
+
+            vm.customersService.updateCustomerName(updateCustomerNameRequest).then(() => {
+                vm.$state.go('customers.info', { id: vm.customerInfo.customerId });
+            });
         }
 
         private loadData(customerId: string) {
@@ -36,5 +43,6 @@
 
     angular
         .module('customerAssignment.customers')
-        .controller('CustomerInfoController', CustomerInfoController);
+        .controller('CustomerEditController', CustomerEditController);
+
 }
