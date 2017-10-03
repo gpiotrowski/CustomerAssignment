@@ -24,6 +24,14 @@
             vm.$state.go('customers.edit', { id: vm.customerInfo.customerId });
         }
 
+        public deleteCustomer() {
+            var vm = this;
+
+            vm.customersService.deleteCustomer(vm.customerInfo.customerId).then(() => {
+                vm.$state.go('customers.list');
+            });
+        }
+
         private loadData(customerId: string) {
             var vm = this;
 
