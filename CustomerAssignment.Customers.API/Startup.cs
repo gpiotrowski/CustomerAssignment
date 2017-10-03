@@ -33,6 +33,7 @@ namespace CustomerAssignment.Customers.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddMvc();
 
             services.AddTransient<ICustomerCommandService, CustomerCommandService>();
@@ -59,6 +60,11 @@ namespace CustomerAssignment.Customers.API
             }
 
             serviceProvider.GetService<ICustomerEventHandler>();
+
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("http://localhost:50611").AllowAnyHeader();
+            });
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseMvc(routes =>
