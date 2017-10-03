@@ -48,6 +48,19 @@
             });
         }
 
+        public updateCustomerContact() {
+            var vm = this;
+
+            var updateCustomerContactRequest = new Request.UpdateCustomerContactRequest();
+            updateCustomerContactRequest.customerId = vm.customerInfo.customerId;
+            updateCustomerContactRequest.countryCode = vm.customerInfo.contactPhone.countryCode;
+            updateCustomerContactRequest.phoneNumber= vm.customerInfo.contactPhone.phoneNumber;
+
+            vm.customersService.updateCustomerContact(updateCustomerContactRequest).then(() => {
+                vm.$state.go('customers.info', { id: vm.customerInfo.customerId });
+            });
+        }
+
         private loadData(customerId: string) {
             var vm = this;
 

@@ -6,6 +6,7 @@
         getCustomerInfo(customerId: string): angular.IPromise<any>;
         updateCustomerName(request: Request.UpdateCustomerNameRequest): angular.IPromise<void>;
         updateCustomerAddress(updateCustomerAddressRequest: Request.UpdateCustomerAddressRequest): angular.IPromise<void>;
+        updateCustomerContact(updateCustomerContactRequest: Request.UpdateCustomerContactRequest): angular.IPromise<void>;
     }
 
     class CustomersService implements ICustomersService {
@@ -59,6 +60,16 @@
             var vm = this;
 
             return vm.$http.post(`${vm.customersEndpoint}api/Customers/UpdateCustomerAddress`, updateCustomerAddressRequest).then(
+                (response) => { },
+                (error) => {
+                    vm.$log.error(error);
+                });
+        }
+
+        updateCustomerContact(updateCustomerContactRequest: Request.UpdateCustomerContactRequest): angular.IPromise<void> {
+            var vm = this;
+
+            return vm.$http.post(`${vm.customersEndpoint}api/Customers/UpdateCustomerContactInfo`, updateCustomerContactRequest).then(
                 (response) => { },
                 (error) => {
                     vm.$log.error(error);
