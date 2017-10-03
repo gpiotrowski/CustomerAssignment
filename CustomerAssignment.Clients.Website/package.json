@@ -2,6 +2,7 @@
   "name": "customer-assignment",
   "version": "1.0.0",
   "devDependencies": {
-    "@types/angular": "^1.6.32"
+    "@types/angular": "^1.6.32",
+    "@types/angular-ui-router": "1.1.39"
   }
 }
