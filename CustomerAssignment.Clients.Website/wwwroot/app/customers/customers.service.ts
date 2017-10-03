@@ -4,7 +4,8 @@
         getCustomerListEntires(): angular.IPromise<Models.CustomerListEntry[] | void>;
         createCustomer(newCustomer: Request.CreateNewCustomerRequest): angular.IPromise<string | void>;
         getCustomerInfo(customerId: string): angular.IPromise<any>;
-        updateCustomerName(request: CustomerAssignment.Customers.Request.UpdateCustomerNameRequest): angular.IPromise<void>;
+        updateCustomerName(request: Request.UpdateCustomerNameRequest): angular.IPromise<void>;
+        updateCustomerAddress(updateCustomerAddressRequest: Request.UpdateCustomerAddressRequest): angular.IPromise<void>;
     }
 
     class CustomersService implements ICustomersService {
@@ -44,10 +45,20 @@
                 });
         }
 
-        updateCustomerName(updateCustomerNameRequest: CustomerAssignment.Customers.Request.UpdateCustomerNameRequest): angular.IPromise<void> {
+        updateCustomerName(updateCustomerNameRequest: Request.UpdateCustomerNameRequest): angular.IPromise<void> {
             var vm = this;
 
             return vm.$http.post(`${vm.customersEndpoint}api/Customers/UpdateCustomerName`, updateCustomerNameRequest).then(
+                (response) => { },
+                (error) => {
+                    vm.$log.error(error);
+                });
+        }
+
+        updateCustomerAddress(updateCustomerAddressRequest: Request.UpdateCustomerAddressRequest): angular.IPromise<void> {
+            var vm = this;
+
+            return vm.$http.post(`${vm.customersEndpoint}api/Customers/UpdateCustomerAddress`, updateCustomerAddressRequest).then(
                 (response) => { },
                 (error) => {
                     vm.$log.error(error);

@@ -31,6 +31,23 @@
             });
         }
 
+        public updateCustomerAddress() {
+            var vm = this;
+
+            var updateCustomerAddressRequest = new Request.UpdateCustomerAddressRequest();
+            updateCustomerAddressRequest.customerId = vm.customerInfo.customerId;
+            updateCustomerAddressRequest.appartmentNumber = vm.customerInfo.address.appartmentNumber;
+            updateCustomerAddressRequest.city = vm.customerInfo.address.city;
+            updateCustomerAddressRequest.country = vm.customerInfo.address.country;
+            updateCustomerAddressRequest.houseNumber = vm.customerInfo.address.houseNumber;
+            updateCustomerAddressRequest.street = vm.customerInfo.address.street;
+            updateCustomerAddressRequest.zipCode = vm.customerInfo.address.zipCode;
+
+            vm.customersService.updateCustomerAddress(updateCustomerAddressRequest).then(() => {
+                vm.$state.go('customers.info', { id: vm.customerInfo.customerId });
+            });
+        }
+
         private loadData(customerId: string) {
             var vm = this;
 
