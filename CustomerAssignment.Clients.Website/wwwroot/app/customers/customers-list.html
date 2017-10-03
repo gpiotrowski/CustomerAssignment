@@ -1,13 +1,15 @@
 ﻿<div ng-controller="CustomersListController as custoemrsListVM">
-    <table datatable="ng" class="row-border hover">
+    <table datatable="ng" class="row-border hover" dt-options="custoemrsListVM.dtOptions">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>FirstName</th>
                 <th>LastName</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="customer in custoemrsListVM.customerListEntries">
+                <td>{{ customer.customerId }}</td>
                 <td>{{ customer.customerFirstName }}</td>
                 <td>{{ customer.customerLastName }}</td>
             </tr>

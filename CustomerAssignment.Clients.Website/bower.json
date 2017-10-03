@@ -2,9 +2,10 @@
   "name": "customerAssignment",
   "private": true,
   "dependencies": {
-    "jquery":  "*",
+    "jquery": "*",
     "angular": "1.6.6",
     "angular-ui-router": "*",
-    "angular-datatables": "0.5.*"
+    "angular-datatables": "0.5.*",
+    "datatables.net-dt": "*"
   }
 }
