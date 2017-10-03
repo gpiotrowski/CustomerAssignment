@@ -18,6 +18,11 @@
                 {
                     url: "/list",
                     templateUrl: modulePath + "customers-list.html"
+                })
+                .state("customers.create",
+                {
+                    url: "/create",
+                    templateUrl: modulePath + "customers-create.html"
                 });
         }
     }

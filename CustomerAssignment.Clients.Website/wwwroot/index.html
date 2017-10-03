@@ -5,12 +5,15 @@
     
     <link rel="stylesheet" href="lib/datatables.net-dt/css/jquery.dataTables.min.css"/>
     <link rel="stylesheet" href="lib/angular-datatables/dist/css/angular-datatables.min.css"/>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css"/>
 
     <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="lib/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="lib/angular-datatables/dist/angular-datatables.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
 
     <script src="app/customerAssignment.module.js"></script>
     <script src="app/customerAssignment.routing.js"></script>
@@ -18,9 +21,21 @@
     <script src="app/customers/customers.module.js"></script>
     <script src="app/customers/customers.routing.js"></script>
     <script src="app/customers/customers-list.controller.js"></script>
+    <script src="app/customers/customers-create.controller.js"></script>
     <script src="app/customers/customers.service.js"></script>
 </head>
 <body ng-app="customerAssignment">
-    <div ui-view></div>
+
+<ul class="nav nav-tabs">
+    <li ui-sref="customers.list" ui-sref-active="active"><a>Customers list</a></li>
+    <li  ui-sref="customers.create" ui-sref-active="active"><a>Create new customer</a></li>
+</ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div ui-view></div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

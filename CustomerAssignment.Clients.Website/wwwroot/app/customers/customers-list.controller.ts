@@ -2,21 +2,21 @@
 
     class CustomersListController {
 
-        customerListEntries: any;
+        customerListEntries: Models.CustomerListEntry[];
         dtOptions: any;
 
         static $inject = ['DTOptionsBuilder', 'customersService'];
         constructor(private DTOptionsBuilder, private customersService: ICustomersService) {
             var vm = this;
 
-            vm.configureDataTable()
+            vm.configureDataTable();
             vm.loadData();
         }
 
         private loadData() {
             var vm = this;
 
-            vm.customersService.getCustomerListEntires().then((data) => {
+            vm.customersService.getCustomerListEntires().then((data: Models.CustomerListEntry[]) => {
                 vm.customerListEntries = data;
             });
         }

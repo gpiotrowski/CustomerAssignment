@@ -63,7 +63,10 @@ namespace CustomerAssignment.Customers.API
 
             app.UseCors(builder =>
             {
-                builder.WithOrigins("http://localhost:50611").AllowAnyHeader();
+                builder
+                    .WithOrigins("http://localhost:50611")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
             });
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));

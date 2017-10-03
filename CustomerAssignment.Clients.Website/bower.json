@@ -6,6 +6,7 @@
     "angular": "1.6.6",
     "angular-ui-router": "*",
     "angular-datatables": "0.5.*",
-    "datatables.net-dt": "*"
+    "datatables.net-dt": "*",
+    "bootstrap":  "*" 
   }
 }
