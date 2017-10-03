@@ -11,7 +11,7 @@ namespace CustomerAssignment.Common.Core.Commands.RetryPolicy
             {
                 action();
             }
-            catch (ConcurrencyException ex)
+            catch (ConcurrencyException)
             {
                 Execute(action);
             }
