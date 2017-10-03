@@ -1,1 +1,17 @@
-﻿<h1>Customers list!</h1>
+﻿<div ng-controller="CustomersListController as custoemrsListVM">
+    <table datatable="ng" class="row-border hover">
+        <thead>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="customer in custoemrsListVM.customerListEntries">
+                <td>{{ customer.customerFirstName }}</td>
+                <td>{{ customer.customerLastName }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

@@ -1,4 +1,6 @@
 ﻿namespace CustomerAssignment.Customers {
     angular
-        .module('customerAssignment.customers', []);
+        .module('customerAssignment.customers', [
+            "datatables"
+        ]);
 }

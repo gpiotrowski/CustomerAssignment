@@ -2,13 +2,22 @@
 <html>
 <head>
     <title>CustomerAssignment</title>
+    
+    <link rel="stylesheet" href="lib/angular-datatables/dist/css/angular-datatables.min.css"/>
+
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="lib/angular-datatables/dist/angular-datatables.js"></script>
 
     <script src="app/customerAssignment.module.js"></script>
     <script src="app/customerAssignment.routing.js"></script>
+    <script src="app/customerAssignment.endpoints.js"></script>
     <script src="app/customers/customers.module.js"></script>
     <script src="app/customers/customers.routing.js"></script>
+    <script src="app/customers/customers-list.controller.js"></script>
+    <script src="app/customers/customers.service.js"></script>
 </head>
 <body ng-app="customerAssignment">
     <div ui-view></div>
