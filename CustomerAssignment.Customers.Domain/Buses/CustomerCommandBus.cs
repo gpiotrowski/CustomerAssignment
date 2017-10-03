@@ -1,4 +1,5 @@
-﻿using CustomerAssignment.Customers.Domain.Commands;
+﻿using CustomerAssignment.Common.Core.Commands.RetryPolicy;
+using CustomerAssignment.Customers.Domain.Commands;
 using CustomerAssignment.Customers.Domain.Handlers;
 
 namespace CustomerAssignment.Customers.Domain.Buses
@@ -19,22 +20,34 @@ namespace CustomerAssignment.Customers.Domain.Buses
 
         public void Send(UpdateCustomerAddressCommand command)
         {
-            _customerCommandHandler.Handle(command);
+            ConcurrencyExceptionRetryPolicy.Execute(() =>
+            {
+                _customerCommandHandler.Handle(command);
+            });
         }
 
         public void Send(UpdateCustomerNameCommand command)
         {
-            _customerCommandHandler.Handle(command);
+            ConcurrencyExceptionRetryPolicy.Execute(() =>
+            {
+                _customerCommandHandler.Handle(command);
+            });
         }
 
         public void Send(UpdateCustomerContactInfoCommand command)
         {
-            _customerCommandHandler.Handle(command);
+            ConcurrencyExceptionRetryPolicy.Execute(() =>
+            {
+                _customerCommandHandler.Handle(command);
+            });
         }
 
         public void Send(DeleteCustomerCommand command)
         {
-            _customerCommandHandler.Handle(command);
+            ConcurrencyExceptionRetryPolicy.Execute(() =>
+            {
+                _customerCommandHandler.Handle(command);
+            });
         }
     }
 }
