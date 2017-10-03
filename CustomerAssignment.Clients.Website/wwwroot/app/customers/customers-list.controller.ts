@@ -5,12 +5,18 @@
         customerListEntries: Models.CustomerListEntry[];
         dtOptions: any;
 
-        static $inject = ['DTOptionsBuilder', 'customersService'];
-        constructor(private DTOptionsBuilder, private customersService: ICustomersService) {
+        static $inject = ['$state', 'DTOptionsBuilder', 'customersService'];
+        constructor(private $state: angular.ui.IStateService, private DTOptionsBuilder, private customersService: ICustomersService) {
             var vm = this;
 
             vm.configureDataTable();
             vm.loadData();
+        }
+
+        public selectCustomer(customerId: string) {
+            var vm = this;
+
+            vm.$state.go('customers.info', { id: customerId });
         }
 
         private loadData() {

@@ -1,0 +1,53 @@
+﻿<div class="row" ng-controller="CustomerInfoController as customerInfoVM">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <div>
+                <label>First name:</label>
+                <span>{{customerInfoVM.customerInfo.name.firstName}}</span>
+            </div>
+            <div>
+                <label>Last name:</label>
+                <span>{{customerInfoVM.customerInfo.name.lastName}}</span>
+            </div></div>
+        <div class="form-group" ng-if="customerInfoVM.customerInfo.address">
+            <h3>Address</h3>
+            <div ng-if="customerInfoVM.customerInfo.address.country">
+                <label>Country:</label>
+                <span>{{customerInfoVM.customerInfo.address.country}}</span>
+            </div>
+            <div ng-if="customerInfoVM.customerInfo.address.city">
+                <label>City:</label>
+                <span>{{customerInfoVM.customerInfo.address.city}}</span>
+            </div>
+            <div class="form-group" ng-if="customerInfoVM.customerInfo.address.street">
+                <label>Street:</label>
+                <span>{{customerInfoVM.customerInfo.address.street}}</span>
+            </div>
+            <div ng-if="customerInfoVM.customerInfo.address.houseNumber">
+                <label>House number:</label>
+                <span>{{customerInfoVM.customerInfo.address.houseNumber}}</span>
+            </div>
+            <div ng-if="customerInfoVM.customerInfo.address.appartmentNumber">
+                <label>Appartment number:</label>
+                <span>{{customerInfoVM.customerInfo.address.appartmentNumber}}</span>
+            </div>
+            <div ng-if="customerInfoVM.customerInfo.address.zipCode">
+                <label>Zip code:</label>
+                <span>{{customerInfoVM.customerInfo.address.zipCode}}</span>
+            </div>
+        </div>
+        <div class="form-group" ng-if="customerInfoVM.customerInfo.contactPhone">
+            <h3>Contact phone</h3>
+            <div ng-if="customerInfoVM.customerInfo.contactPhone.countryCode">
+                <label>Country code:</label>
+                <span>{{customerInfoVM.customerInfo.contactPhone.countryCode}}</span>
+            </div>
+            <div ng-if="customerInfoVM.customerInfo.contactPhone.phoneNumber">
+                <label>Phone number:</label>
+                <span>{{customerInfoVM.customerInfo.contactPhone.phoneNumber}}</span>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-default" ng-click="customerInfoVM.editCustomer()">Edit</button>
+    </div>
+</div>

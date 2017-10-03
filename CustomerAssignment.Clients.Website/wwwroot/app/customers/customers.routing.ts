@@ -23,6 +23,11 @@
                 {
                     url: "/create",
                     templateUrl: modulePath + "customers-create.html"
+                })
+                .state("customers.info",
+                {
+                    url: "/info?id",
+                    templateUrl: modulePath + "customers-info.html"
                 });
         }
     }

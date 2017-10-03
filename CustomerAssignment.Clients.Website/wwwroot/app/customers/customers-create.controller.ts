@@ -12,8 +12,8 @@
         public createNewCustomer() {
             var vm = this;
 
-            vm.customersService.createCustomer(vm.newCustomer).then(() => {
-                vm.$state.go('customers.list');
+            vm.customersService.createCustomer(vm.newCustomer).then((customerId: string) => {
+                vm.$state.go('customers.info', { id: customerId});
             });
         }
 

@@ -2,7 +2,8 @@
 
     export interface ICustomersService {
         getCustomerListEntires(): angular.IPromise<Models.CustomerListEntry[] | void>;
-        createCustomer(newCustomer: Request.CreateNewCustomerRequest): angular.IPromise<void>;
+        createCustomer(newCustomer: Request.CreateNewCustomerRequest): angular.IPromise<string | void>;
+        getCustomerInfo(customerId: string): angular.IPromise<any>;
     }
 
     class CustomersService implements ICustomersService {
@@ -22,11 +23,21 @@
                 });
         }
 
-        createCustomer(newCustomer: Request.CreateNewCustomerRequest): angular.IPromise<void> {
+        createCustomer(newCustomer: Request.CreateNewCustomerRequest): angular.IPromise<string | void> {
             var vm = this;
 
             return vm.$http.post(`${vm.customersEndpoint}api/Customers/CreateCustomer`, newCustomer).then(
-                (response) => { },
+                (response) => response.data as string,
+                (error) => {
+                    vm.$log.error(error);
+                });
+        }
+
+        getCustomerInfo(customerId: string): angular.IPromise<Models.CustomerContactCard | void> {
+            var vm = this;
+
+            return vm.$http.get(`${vm.customersEndpoint}api/Customers/GetCustomerContactCard?customerId=${customerId}`).then(
+                (response) => response.data as Models.CustomerContactCard,
                 (error) => {
                     vm.$log.error(error);
                 });
